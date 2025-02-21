@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class ExerciseServiceDecorator extends ExerciseService {
+
     protected final ExerciseService exerciseService;
 
     protected ExerciseServiceDecorator(ExerciseService exerciseService) {

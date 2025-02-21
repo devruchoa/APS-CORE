@@ -13,6 +13,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ExerciseService {
+
     private final ExerciseRepository exerciseRepository;
 
     public Exercise createExercise(ExerciseDTO exerciseDTO) {

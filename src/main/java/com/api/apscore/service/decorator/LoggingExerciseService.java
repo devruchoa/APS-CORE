@@ -5,6 +5,7 @@ import com.api.apscore.model.Exercise;
 import com.api.apscore.service.ExerciseService;
 
 public class LoggingExerciseService extends ExerciseServiceDecorator {
+
     public LoggingExerciseService(ExerciseService exerciseService) {
         super(exerciseService);
     }
