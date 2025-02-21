@@ -1,6 +1,7 @@
 package com.api.apscore.service;
 
 import com.api.apscore.dto.ExerciseDTO;
+import com.api.apscore.factory.ExerciseFactory;
 import com.api.apscore.model.Exercise;
 import com.api.apscore.repository.ExerciseRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,18 +13,10 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class ExerciseService {
-
     private final ExerciseRepository exerciseRepository;
 
     public Exercise createExercise(ExerciseDTO exerciseDTO) {
-        Exercise exercise = Exercise.builder()
-                .name(exerciseDTO.getName())
-                .targetMuscle(exerciseDTO.getTargetMuscle())
-                .sets(exerciseDTO.getSets())
-                .reps(exerciseDTO.getReps())
-                .suggestedWeight(exerciseDTO.getSuggestedWeight())
-                .build();
-
+        Exercise exercise = ExerciseFactory.createExercise(exerciseDTO);
         return exerciseRepository.save(exercise);
     }
 
@@ -51,5 +44,9 @@ public class ExerciseService {
             exerciseRepository.delete(exercise);
             return true;
         }).orElse(false);
+    }
+
+    public ExerciseRepository getExerciseRepository() {
+        return exerciseRepository;
     }
 }
